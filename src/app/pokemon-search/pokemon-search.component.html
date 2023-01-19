@@ -1,0 +1,20 @@
+<div class="pokemon-search">
+    <h1 class="title">Pokemon Search</h1>
+
+	<input type="text" placeholder="Search for Pokemon" (keyup)="keyPress($event)" autofocus>
+	<p *ngIf="filteredPokemon.length==1" class="count">{{filteredPokemon.length}} result</p>
+	<p *ngIf="filteredPokemon.length>1" class="count">{{filteredPokemon.length}} results</p>
+
+	<div class="pokemon-list">
+		<div *ngFor="let p of filteredPokemon" class="pokemon">
+			<div class="pokemon-details">
+				<span><b>#{{p.id}}</b></span>
+				<span class="name">{{p.name}}</span>
+				<span *ngIf="p.type1" class="type" [ngClass]="p.type1">{{p.type1}}</span>
+				<span *ngIf="p.type2" class="type" [ngClass]="p.type2">{{p.type2}}</span>
+			</div>
+
+			<img src="{{p.image}}">
+		</div>
+	</div>
+</div>
